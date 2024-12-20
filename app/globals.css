@@ -16,3 +16,127 @@ body {
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.085);
 }
+
+.spriteContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sprite {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.sprite::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, transparent 60%, black 70%);
+  transform: rotate(45deg);
+  animation: spin 5s linear infinite;
+}
+
+.sprite:hover {
+  animation: moveSideways 0.6s ease-in-out infinite alternate;
+}
+
+/* Add stars */
+.sprite .star {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.sprite .star::before {
+  content: "*";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: pink;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sprite .star.yellow::before {
+  background-color: yellow;
+}
+
+.sprite .star.green::before {
+  background-color: green;
+}
+
+.star.one {
+  top: -10px;
+  left: -20px;
+}
+
+.star.two {
+  top: -15px;
+  right: -25px;
+}
+
+.star.three {
+  bottom: -10px;
+  left: -30px;
+}
+
+.star.four {
+  bottom: -15px;
+  right: -20px;
+}
+
+.eye {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.eye.left {
+  left: 30px;
+}
+
+.eye.right {
+  right: 30px;
+}
+
+.eye::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 8px;
+  height: 8px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+@keyframes moveSideways {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
